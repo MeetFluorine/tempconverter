@@ -10,7 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   padding-top: 20vh;
-  background-image: url('/temprature/temp.jpg');
+  background-image: url('temp.jpg');
 }
 
 .container {
