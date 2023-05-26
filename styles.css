@@ -98,22 +98,3 @@ p {
   font-size: 3rem;
 }
 
-.media-icons{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-
-}
-.media-icons a{
-  position: relative;
-  color: black;
-  font-size: 25px;
-  align-items:center;
-  margin: 0 10px;
-  transition: 0.3s;
-  transition-property: transform;
-}
-.media-icons a:hover{
-  transform:scale(1.5);
-}
