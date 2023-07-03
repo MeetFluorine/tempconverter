@@ -32,14 +32,16 @@ window.addEventListener('keyup',function(event){
           result= result.substr(0,result.length-1);
           display.innerText= result;
           if(display.innerText.length == 0){
-            input.value = '"';
+            input.value = "";
             type.value= "none";
           }
-        if (input.value.length==0){
+          if (input.value.length==0){
             display.innerText="";
             type.value="none";
+
           }
     }
+
     if(event.key=="Delete"){
         display.innerText="";
         input.value="";
