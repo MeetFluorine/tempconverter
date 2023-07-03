@@ -35,6 +35,10 @@ window.addEventListener('keyup',function(event){
             input.value = '"';
             type.value= "none";
           }
+        if (input.value.length==0){
+            display.innerText="";
+            type.value="none";
+          }
     }
     if(event.key=="Delete"){
         display.innerText="";
