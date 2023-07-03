@@ -1,43 +1,65 @@
-var emoji = document.querySelector("#icon");
-var par = document.querySelector("#par");
-let temprature = () => {
-    let opt = document.querySelector("#unit");
-    let display = document.querySelector(".value");
-    var a = document.querySelector(".takval").value;
-    if (opt.value == "Celsius") {
-        console.log(a, "C to F", opt.value)
-        let F = a * (9 / 5) + 32
-        display.innerHTML = F.toFixed(4) + " F"
-        if (F < 32) {
-            emoji.style = "color:blue"
-            emoji.className = "fa-solid fa-face-grimace"
-            par.innerHTML = "Cool at frezing point"
-        } else if (F > 122) {
-            emoji.style = "color:red"
-            emoji.className = "fa-solid fa-face-dizzy"
-            par.innerHTML = "So Warm"
-        } else {
-            emoji.className = "fa-solid fa-face-grin"
-            par.innerHTML = ""
-            emoji.style = "color:rgb(253, 174, 37)"
+let input= document.querySelector("#input");
+let type = document.querySelector("#unit");
+let display = document.querySelector("#display");
+
+function temperature(){
+    if(type.value== "Celsius"){
+        let C= input.value;
+        let F= (C * (9/5))+ 32;
+        if(!Number.isInteger(F)){
+            F= F.toFixed(2);
         }
 
-    } else {
-        console.log(a, "F to C", opt.value)
-        let C = (a - 32) * (5 / 9)
-        display.innerHTML = C.toFixed(4) + " ºC"
-        if (C < 0) {
-            emoji.style = "color:blue"
-            emoji.className = "fa-solid fa-face-grimace"
-            par.innerHTML = "Cool at frezing point"
-        } else if (C > 50) {
-            emoji.style = "color:red"
-            emoji.className = "fa-solid fa-face-dizzy"
-            par.innerHTML = "So Warm"
-        } else {
-            emoji.className = "fa-solid fa-face-grin"
-            par.innerHTML = ""
-            emoji.style = "color:rgb(253, 174, 37)"
+        display.innerHTML=F+"&deg;F";
+        
+    }
+    else if(type.value== "Fahrenheit"){
+        let F= input.value;
+        let C = (F-32)*5/9;
+        if(!Number.isInteger(C)){
+            C= C.toFixed(2);
         }
+        display.innerHTML=C+"&deg;C";
+    }
+    else{
+        alert("Enter a valid value and Type");
     }
 }
+
+window.addEventListener('keyup',function(event){
+    if(event.key=="Backspace"){
+           var result= display.innerText;
+          result= result.substr(0,result.length-1);
+          display.innerText= result;
+          if(display.innerText.length == 0){
+            input.value = '"';
+            type.value= "none";
+          }
+    }
+    if(event.key=="Delete"){
+        display.innerText="";
+        input.value="";
+        type.value="none"
+    }
+    if(event.key=="Enter"){
+        temperature();
+    }
+})
+
+
+
+// to prevent the inspect
+
+document.addEventListener('contextmenu', 
+     event => event.preventDefault()
+);
+
+
+document.addEventListener("keydown", function (event){
+    if (event.ctrlKey){
+       event.preventDefault();
+    }
+    if(event.keyCode == 123){
+       event.preventDefault();
+    }
+});
